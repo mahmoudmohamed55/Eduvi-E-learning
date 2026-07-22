@@ -1,0 +1,11 @@
+✅ Home
+✅ Courses
+✅ Course Details
+✅ Categories
+✅ Contact
+✅ Login
+✅ Register
+✅ Profile
+✅ Wishlist
+✅ Cart
+✅ Admin Dashboard

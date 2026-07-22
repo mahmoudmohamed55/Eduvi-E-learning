@@ -1,2 +1,99 @@
 @import "tailwindcss";
 
+@theme {
+  /* ================= Primary - Violet ================= */
+  --color-primary-50: #f5f3ff;
+  --color-primary-100: #ede9fe;
+  --color-primary-200: #ddd6fe;
+  --color-primary-300: #c4b5fd;
+  --color-primary-400: #a78bfa;
+  --color-primary-500: #8b5cf6;
+  --color-primary-600: #7c3aed; /* اللون الأساسي زي الصورة */
+  --color-primary-700: #6d28d9;
+  --color-primary-800: #5b21b6;
+  --color-primary-900: #4c1d95;
+  --color-primary-950: #2e1065;
+
+  /* ================= Secondary - Coral ================= */
+  --color-secondary-50: #fff1ee;
+  --color-secondary-100: #ffe1da;
+  --color-secondary-200: #ffc7ba;
+  --color-secondary-300: #ffa28c;
+  --color-secondary-400: #ff8a72;
+  --color-secondary-500: #ff6f61; /* الكورال الأساسي */
+  --color-secondary-600: #f2503f;
+  --color-secondary-700: #cb3a2b;
+  --color-secondary-800: #a6301f;
+  --color-secondary-900: #872c1e;
+  --color-secondary-950: #49130c;
+
+  /* ================= Accent - Orange (Badge/Icons) ================= */
+  --color-accent-50: #fff7ed;
+  --color-accent-100: #ffedd5;
+  --color-accent-200: #fed7aa;
+  --color-accent-300: #fdba74;
+  --color-accent-400: #fb923c;
+  --color-accent-500: #f97316;
+  --color-accent-600: #ea580c; /* اللون الأساسي زي الصورة */
+  --color-accent-700: #c2410c;
+  --color-accent-800: #9a3412;
+  --color-accent-900: #7c2d12;
+
+  /* ================= Ink / Dark (Headings & Text) ================= */
+  --color-ink-50: #f4f3f9;
+  --color-ink-100: #e6e4f1;
+  --color-ink-200: #cbc7e3;
+  --color-ink-300: #a8a1cd;
+  --color-ink-400: #7d74ab;
+  --color-ink-500: #5c5289;
+  --color-ink-600: #453c6c;
+  --color-ink-700: #342c53;
+  --color-ink-800: #241d3d;
+  --color-ink-900: #1a1533; /* لون العناوين الأساسي زي الصورة */
+  --color-ink-950: #0f0c1f;
+
+  /* ================= Surface / Background ================= */
+  --color-surface-50: #ffffff;
+  --color-surface-100: #f5f2fc; /* خلفية الصفحة زي الصورة */
+  --color-surface-200: #ece7f8;
+  --color-surface-300: #ddd5f2;
+  --color-surface-400: #c9bde8;
+
+  /* ================= Neutral (Gray) ================= */
+  --color-neutral-50: #fafafa;
+  --color-neutral-100: #f4f4f5;
+  --color-neutral-200: #e4e4e7;
+  --color-neutral-300: #d4d4d8;
+  --color-neutral-400: #a1a1aa;
+  --color-neutral-500: #71717a;
+  --color-neutral-600: #52525b;
+  --color-neutral-700: #3f3f46;
+  --color-neutral-800: #27272a;
+  --color-neutral-900: #18181b;
+
+  /* ================= Semantic Colors ================= */
+  --color-success-500: #22c55e;
+  --color-warning-500: #f59e0b;
+  --color-error-500: #ef4444;
+  --color-info-500: #3b82f6;
+
+  /* ================= Fonts (اختياري) ================= */
+  --font-sans: "Cairo", "Open Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ================= Base Styles ================= */
+@layer base {
+  body {
+    @apply bg-surface-100 text-ink-900 font-sans antialiased;
+  }
+}
+@utility container {
+  @apply mx-auto w-full max-w-6xl px-0 sm:px-6 lg:px-8;
+}
+@layer components {
+  .mobile-link {
+    @apply md:bg-transparent sm:hover:text-ink-900 hover:bg-surface-100 md:hover:bg-transparent hover:text-primary-600 flex items-center justify-between rounded-xl px-1 py-4 text-lg font-medium md:text-ink-900 transition-all duration-300;
+  }
+
+
+}

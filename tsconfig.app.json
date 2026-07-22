@@ -14,7 +14,17 @@
     "moduleDetection": "force",
     "noEmit": true,
     "jsx": "react-jsx",
+    "paths": {
 
+      "@pages/*": ["./src/pages/*"],
+      "@components/*": ["./src/components/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@store/*": ["./src/store/*"],
+      "@types/*": ["./src/types/*"],
+      "@layout/*": ["./src/layout/*"],
+      "@routes/*": ["./src/routes/*"]
+    },
     /* Linting */
     "noUnusedLocals": true,
     "noUnusedParameters": true,
