@@ -15,15 +15,18 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "paths": {
-
       "@pages/*": ["./src/pages/*"],
       "@components/*": ["./src/components/*"],
       "@assets/*": ["./src/assets/*"],
       "@utils/*": ["./src/utils/*"],
       "@store/*": ["./src/store/*"],
-      "@types/*": ["./src/types/*"],
+      "@store": ["./src/store/index.ts"],
+      "@types": ["./src/types/index.ts"],
       "@layout/*": ["./src/layout/*"],
-      "@routes/*": ["./src/routes/*"]
+      "@routes/*": ["./src/routes/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@validations/*": ["./src/validations/*"],
+      "@service/*": ["./src/service/*"]
     },
     /* Linting */
     "noUnusedLocals": true,
