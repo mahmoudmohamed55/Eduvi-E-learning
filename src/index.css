@@ -84,7 +84,7 @@
 /* ================= Base Styles ================= */
 @layer base {
   body {
-    @apply bg-surface-100 text-ink-900 font-sans antialiased;
+    @apply bg-surface-200 text-ink-900 font-sans antialiased;
   }
 }
 @utility container {

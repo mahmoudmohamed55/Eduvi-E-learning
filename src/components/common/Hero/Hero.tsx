@@ -6,10 +6,11 @@ import {
   ChartColumn,
   ArrowRight,
 } from "lucide-react";
+import { Link, Navigate } from "react-router-dom";
 
 export const Hero = () => {
   return (
-    <section className="bg-[#f8f5ff]">
+    <section className="bg-[#f8f5ff] mt-5 rounded-2xl">
       <div className="container mx-auto px-6 py-20">
         <div className="flex flex-col items-center justify-between gap-10 lg:flex-row lg:gap-0">
           <div className="w-full max-w-lg lg:max-w-xl">
@@ -31,14 +32,21 @@ export const Hero = () => {
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4">
-              <button className="flex items-center gap-2 rounded-xl bg-violet-600 px-7 py-4 font-semibold text-white transition hover:bg-violet-700">
+              <Link
+                to="/courses"
+                className="flex items-center cursor-pointer gap-2 rounded-xl bg-violet-600 px-7 py-4 font-semibold text-white transition hover:bg-violet-700"
+              >
                 Browse Courses
                 <ArrowRight size={18} />
-              </button>
+              </Link>
 
-              <button className="rounded-xl border border-slate-300 px-7 py-4 font-semibold hover:bg-white">
+              <Link
+                to="/categories"
+                className="rounded-xl border border-slate-300 px-7 py-4 font-semibold text-slate-900 transition hover:bg-white"
+                
+              >
                 Explore Categories
-              </button>
+              </Link>
             </div>
           </div>
 

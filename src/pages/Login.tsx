@@ -3,6 +3,7 @@ import image from "@assets/auth.png";
 import { LuBookOpenText } from "react-icons/lu";
 
 import { useLogin } from "@hooks/useLogin";
+import { Input } from "@components/form/Input";
 
 export const Login = () => {
   const {
@@ -45,7 +46,7 @@ export const Login = () => {
           </div>
         </div>
 
-        {/* Right */}
+
         <div className="flex flex-1 items-center justify-center p-8 lg:p-14">
           <div className="w-full max-w-md">
             <h2 className="mb-8 text-center text-3xl font-bold text-ink-900">
@@ -53,52 +54,21 @@ export const Login = () => {
             </h2>
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-              <div>
-                <label className="mb-2 block text-sm font-medium text-ink-700">
-                  Email
-                </label>
-
-                <input
-                  type="email"
-                  {...register("email")}
-                  placeholder="Enter your email"
-                  className={`w-full rounded-xl border px-4 py-3 text-ink-900 outline-none transition-all duration-200
-      ${
-        errors.email
-          ? "border-error-500 bg-red-50 focus:border-error-500 focus:ring-4 focus:ring-error-500/10"
-          : "border-neutral-200 bg-white focus:border-primary-600 focus:ring-4 focus:ring-primary-600/10"
-      }`}
-                />
-
-                {errors.email && (
-                  <p className="mt-2 text-sm font-medium text-error-500">
-                    {errors.email.message}
-                  </p>
-                )}
-              </div>
-              <div>
-                <label className="mb-2 block text-sm font-medium text-ink-700">
-                  Password
-                </label>
-
-                <input
-                  type="password"
-                  {...register("password")}
-                  placeholder="********"
-                  className={`w-full rounded-xl border px-4 py-3 text-ink-900 outline-none transition-all duration-200
-      ${
-        errors.password
-          ? "border-error-500 bg-red-50 focus:border-error-500 focus:ring-4 focus:ring-error-500/10"
-          : "border-neutral-200 bg-white focus:border-primary-600 focus:ring-4 focus:ring-primary-600/10"
-      }`}
-                />
-
-                {errors.password && (
-                  <p className="mt-2 text-sm font-medium text-error-500">
-                    {errors.password.message}
-                  </p>
-                )}
-              </div>
+             <Input
+                name="email"
+                type="email"
+                placeholder="Email"
+                register={register}
+                errors={errors.email?.message}
+                emailErrors={error}
+              />
+              <Input
+                name="password"
+                type="password" 
+                placeholder="Password"
+                register={register}
+                errors={errors.password?.message}
+              />
 
               <label className="flex items-center gap-3 text-sm text-neutral-600">
                 <input type="checkbox" className="h-4 w-4 accent-primary-600" />

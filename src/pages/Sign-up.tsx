@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import image from "@assets/auth.png";
 import { LuBookOpenText } from "react-icons/lu";
 import { useRegister } from "@hooks/useRegister";
+import { Input } from "@components/form/Input";
 
 export const Register = () => {
   const {
@@ -52,104 +53,37 @@ export const Register = () => {
             </h2>
 
             <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
-              <div>
-                <label className="mb-2 block text-sm font-medium text-ink-700">
-                  Full Name
-                </label>
+              <Input
+                name="name"
+                type="text"
+                placeholder="Name"
+                register={register}
+                errors={errors.name?.message}
+              />
+              <Input
+                name="email"
+                type="email"
+                placeholder="Email"
+                register={register}
+                errors={errors.email?.message}
+                emailErrors={error}
+              />
 
-                <input
-                  type="text"
-                  {...register("name")}
-                  placeholder="Enter your full name"
-                  className={`w-full rounded-xl border px-4 py-3 text-ink-900 outline-none transition-all duration-200
-      ${
-        errors.name
-          ? "border-error-500 bg-red-50 focus:border-error-500 focus:ring-4 focus:ring-error-500/10"
-          : "border-neutral-200 bg-white focus:border-primary-600 focus:ring-4 focus:ring-primary-600/10"
-      }`}
-                />
+              <Input
+                name="password"
+                type="password"
+                placeholder="Password"
+                register={register}
+                errors={errors.password?.message}
+              />
 
-                {errors.name && (
-                  <p className="mt-2 text-sm font-medium text-error-500">
-                    {errors.name.message}
-                  </p>
-                )}
-              </div>
-              <div>
-                <label className="mb-2 block text-sm font-medium text-ink-700">
-                  Email
-                </label>
-
-                <input
-                  type="email"
-                  {...register("email")}
-                  placeholder="Enter your email"
-                  className={`w-full rounded-xl border px-4 py-3 text-ink-900 outline-none transition-all duration-200
-      ${
-        errors.email
-          ? "border-error-500 bg-red-50 focus:border-error-500 focus:ring-4 focus:ring-error-500/10"
-          : "border-neutral-200 bg-white focus:border-primary-600 focus:ring-4 focus:ring-primary-600/10"
-      }`}
-                />
-
-                {errors.email && !error && (
-                  <p className="mt-2 text-sm font-medium text-error-500">
-                    {errors.email.message}
-                  </p>
-                )}
-                {error && (
-                  <p className="mt-2 text-sm font-medium text-error-500">
-                    {error}
-                  </p>
-                )}
-              </div>
-
-              <div>
-                <label className="mb-2 block text-sm font-medium text-ink-700">
-                  Password
-                </label>
-
-                <input
-                  type="password"
-                  {...register("password")}
-                  placeholder="********"
-                  className={`w-full rounded-xl border px-4 py-3 text-ink-900 outline-none transition-all duration-200
-      ${
-        errors.password
-          ? "border-error-500 bg-red-50 focus:border-error-500 focus:ring-4 focus:ring-error-500/10"
-          : "border-neutral-200 bg-white focus:border-primary-600 focus:ring-4 focus:ring-primary-600/10"
-      }`}
-                />
-
-                {errors.password && (
-                  <p className="mt-2 text-sm font-medium text-error-500">
-                    {errors.password.message}
-                  </p>
-                )}
-              </div>
-
-              <div>
-                <label className="mb-2 block text-sm font-medium text-ink-700">
-                  Confirm Password
-                </label>
-
-                <input
-                  {...register("confirmPassword")}
-                  type="password"
-                  placeholder="********"
-                  className={`w-full rounded-xl border px-4 py-3 text-ink-900 outline-none transition-all duration-200
-      ${
-        errors.confirmPassword
-          ? "border-error-500 bg-red-50 focus:border-error-500 focus:ring-4 focus:ring-error-500/10"
-          : "border-neutral-200 bg-white focus:border-primary-600 focus:ring-4 focus:ring-primary-600/10"
-      }`}
-                />
-                {errors.confirmPassword && (
-                  <p className="mt-2 text-sm font-medium text-error-500">
-                    {errors.confirmPassword.message}
-                  </p>
-                )}
-              </div>
+              <Input
+                name="confirmPassword"
+                type="password"
+                placeholder="Confirm Password"
+                register={register}
+                errors={errors.confirmPassword?.message}
+              />
 
               <label className="flex items-center gap-3 text-sm text-neutral-600">
                 <input type="checkbox" className="h-4 w-4 accent-primary-600" />
