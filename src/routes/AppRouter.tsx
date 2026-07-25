@@ -1,10 +1,13 @@
 import { MainLayout } from "@layout/MainLayout";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Courses } from "@pages/Courses";
+
 import { Home } from "@pages/Home";
 import { Register } from "@pages/Sign-up";
 import { Login } from "@pages/Login";
+import { Categories } from "@pages/Categories";
+import { CategoryDetails } from "@pages/CategoryDetails";
+import Courses from "@pages/Courses";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +21,18 @@ const router = createBrowserRouter([
       {
         path: "courses",
         element: <Courses />,
+      },
+      {
+        path: "categories",
+        element: <Categories />,
+      },
+      {
+        path: "categories/:slug",
+        element: <CategoryDetails />,
+      },
+      {
+        path: "profile",
+        element: <h1>Profile</h1>,
       },
       {
         path: "register",

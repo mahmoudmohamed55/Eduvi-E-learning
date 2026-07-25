@@ -1,9 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import authReducer from "./auth/authSlice";
+import auth from "./auth/authSlice";
+import categories from "./categories/categoriesSlice";
+import courses from "./courses/coursesSlice";
 
 export const store = configureStore({
   reducer: {
-    auth: authReducer,
+    auth,
+    categories,
+    courses,
   },
 });
 

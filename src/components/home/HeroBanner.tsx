@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+
 import heroImage from "@assets/HeroBanner.png";
 
 export const HeroBanner = () => {
@@ -34,7 +34,7 @@ export const HeroBanner = () => {
         <img
           src={heroImage}
           alt="Hero"
-          className="w-full max-w-[680px] object-contain"
+          className="w-full max-w-170 object-contain"
         />
       </div>
 
