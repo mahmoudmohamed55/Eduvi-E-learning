@@ -49,17 +49,16 @@
   --color-ink-600: #453c6c;
   --color-ink-700: #342c53;
   --color-ink-800: #241d3d;
-  --color-ink-900: #1a1533; /* لون العناوين الأساسي زي الصورة */
+  --color-ink-900: #1a1533;    
   --color-ink-950: #0f0c1f;
 
-  /* ================= Surface / Background ================= */
+
   --color-surface-50: #ffffff;
-  --color-surface-100: #f5f2fc; /* خلفية الصفحة زي الصورة */
   --color-surface-200: #ece7f8;
   --color-surface-300: #ddd5f2;
   --color-surface-400: #c9bde8;
 
-  /* ================= Neutral (Gray) ================= */
+
   --color-neutral-50: #fafafa;
   --color-neutral-100: #f4f4f5;
   --color-neutral-200: #e4e4e7;
@@ -71,7 +70,6 @@
   --color-neutral-800: #27272a;
   --color-neutral-900: #18181b;
 
-  /* ================= Semantic Colors ================= */
   --color-success-500: #22c55e;
   --color-warning-500: #f59e0b;
   --color-error-500: #ef4444;
@@ -96,4 +94,21 @@
   }
 
 
+}
+.custom-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 999px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: #7c3aed;
+  border-radius: 999px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+  background: #6d28d9;
 }

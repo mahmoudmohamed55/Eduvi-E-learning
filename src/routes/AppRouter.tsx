@@ -8,6 +8,7 @@ import { Login } from "@pages/Login";
 import { Categories } from "@pages/Categories";
 import { CategoryDetails } from "@pages/CategoryDetails";
 import Courses from "@pages/Courses";
+import CourseDetails from "@pages/CourseDetails";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,14 @@ const router = createBrowserRouter([
       {
         path: "categories",
         element: <Categories />,
+      },
+      {
+        path: "categories/:slug",
+        element: <CategoryDetails />,
+      },
+      {
+        path: "courses/:slug",
+        element: <CourseDetails />,
       },
       {
         path: "categories/:slug",
