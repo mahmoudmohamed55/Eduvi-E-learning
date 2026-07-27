@@ -90,7 +90,7 @@
 }
 @layer components {
   .mobile-link {
-    @apply md:bg-transparent sm:hover:text-ink-900 hover:bg-surface-100 md:hover:bg-transparent hover:text-primary-600 flex items-center justify-between rounded-xl px-1 py-4 text-lg font-medium md:text-ink-900 transition-all duration-300;
+    @apply md:bg-transparent sm:hover:text-ink-900  md:hover:bg-transparent hover:text-primary-600 flex items-center justify-between rounded-xl px-1 py-4 text-lg font-medium md:text-ink-900 transition-all duration-300;
   }
 
 

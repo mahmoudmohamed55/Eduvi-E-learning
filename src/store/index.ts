@@ -3,6 +3,7 @@ import auth from "./auth/authSlice";
 import categories from "./categories/categoriesSlice";
 import courses from "./courses/coursesSlice";
 import courseDetails from "./courseDetails/courseDetailsSlice";
+import Profile from "./profile/profileSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     categories,
     courses,
     courseDetails,
+    Profile,
   },
 });
 

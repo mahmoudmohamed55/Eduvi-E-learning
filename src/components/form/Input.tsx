@@ -10,7 +10,7 @@ type TInputProps<TfieldValues extends FieldValues> = {
 
 export const Input = <TFieldValues extends FieldValues>({
   name,
-  type,
+  type = "string",
   placeholder,
   register,
   errors,

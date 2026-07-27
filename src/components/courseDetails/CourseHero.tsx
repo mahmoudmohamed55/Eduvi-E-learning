@@ -26,12 +26,11 @@ const CourseHero = ({ course }: CourseHeroProps) => {
   return (
     <section className="grid grid-cols-1 gap-8 lg:grid-cols-3">
 
-      {/* ================= Left Image ================= */}
       <div className="lg:col-span-2">
         <div
           className="
             relative
-            h-96
+            max-h-full
             overflow-hidden
             rounded-[28px]
             bg-gradient-to-br
@@ -82,10 +81,10 @@ const CourseHero = ({ course }: CourseHeroProps) => {
       </div>
 
 
-      {/* ================= Playlist ================= */}
       <aside
         className="
           overflow-hidden
+          max-h-full
           rounded-[28px]
           border
           border-primary-100
@@ -118,7 +117,7 @@ const CourseHero = ({ course }: CourseHeroProps) => {
         <div
           className="
             custom-scroll
-            h-96
+            h-full
             space-y-4
             overflow-y-auto
             p-4

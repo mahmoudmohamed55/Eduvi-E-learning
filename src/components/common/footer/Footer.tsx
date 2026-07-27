@@ -9,7 +9,7 @@ import { BookOpenText } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="mt-10 border-t border-neutral-200 bg-surface-100 rounded-tl-2xl rounded-tr-2xl">
+    <footer className="mt-10 border-t border-neutral-200 bg-[#f8f5ff] rounded-tl-2xl rounded-tr-2xl mt-auto">
       <div className=" py-10">
         <div className="flex flex-col items-center text-center">
           <div className="flex flex-col md:flex-row items-center gap-2">

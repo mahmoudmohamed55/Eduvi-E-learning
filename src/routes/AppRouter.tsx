@@ -9,6 +9,7 @@ import { Categories } from "@pages/Categories";
 import { CategoryDetails } from "@pages/CategoryDetails";
 import Courses from "@pages/Courses";
 import CourseDetails from "@pages/CourseDetails";
+import  Profile  from "@pages/Profile";
 
 const router = createBrowserRouter([
   {
@@ -39,9 +40,10 @@ const router = createBrowserRouter([
         path: "categories/:slug",
         element: <CategoryDetails />,
       },
+
       {
         path: "profile",
-        element: <h1>Profile</h1>,
+        element: <Profile />,
       },
       {
         path: "register",

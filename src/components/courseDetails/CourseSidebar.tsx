@@ -29,13 +29,12 @@ const CourseSidebar = ({ course }: CourseSidebarProps) => {
         bg-white
         p-6
         shadow-lg
+        max-h-fit
       "
     >
 
-      {/* Info List */}
       <div className="space-y-4">
 
-        {/* Price */}
         <div className="flex items-center justify-between">
           <span className="text-sm text-neutral-500">
             Price
@@ -135,7 +134,7 @@ const CourseSidebar = ({ course }: CourseSidebarProps) => {
 
 
 
-        {/* Sections */}
+
         <div className="flex items-center justify-between">
 
           <span className="text-sm text-neutral-500">
