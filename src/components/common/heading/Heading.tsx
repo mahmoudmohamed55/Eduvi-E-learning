@@ -10,7 +10,7 @@ type Props = {
 export const Heading = ({ title, description, image }: Props) => {
   return (
     <section className="relative overflow-hidden ">
-      <div className="container flex min-h-65 items-center justify-between py-5">
+      <div className="container flex min-h-65 items-center justify-between py-5 px-2.5">
 
 
         <div className="max-w-xl">

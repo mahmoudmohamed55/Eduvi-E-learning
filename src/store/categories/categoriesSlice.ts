@@ -13,31 +13,41 @@ const initialState: CategoriesState = {
   loading: "idle",
   error: null,
 };
+
 const categoriesSlice = createSlice({
   name: "categories",
+
   initialState,
+
   reducers: {
     clearCategories: (state) => {
       state.records = [];
       state.loading = "idle";
       state.error = null;
-    }
+    },
   },
+
   extraReducers: (builder) => {
     builder.addCase(actGetCategories.pending, (state) => {
       state.loading = "pending";
       state.error = null;
     });
+
     builder.addCase(actGetCategories.fulfilled, (state, action) => {
       state.loading = "succeeded";
       state.records = action.payload || [];
     });
+
     builder.addCase(actGetCategories.rejected, (state, action) => {
       state.loading = "failed";
-      state.error = action.payload as string;
+      state.error =
+        (action.payload as string) ||
+        action.error.message ||
+        "Failed to fetch categories";
     });
   },
 });
+
 export default categoriesSlice.reducer;
 
 export const { clearCategories } = categoriesSlice.actions;

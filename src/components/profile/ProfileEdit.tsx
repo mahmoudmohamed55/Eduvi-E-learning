@@ -9,8 +9,6 @@ import ProfileAvatar from "./ProfileAvatar";
 import { profileSchema, type TProfileSchema } from "@validations/profileSchema";
 import { Input } from "@components/form/Input";
 
-
-
 type ProfileEditProps = {
   profile: TProfile;
   loading: boolean;
@@ -25,14 +23,16 @@ const ProfileEdit = ({
   onSubmit,
 }: ProfileEditProps) => {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
-
+  console.log(selectedImage);
   const [preview, setPreview] = useState<string>();
+  console.log(preview);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<TProfileSchema>({
+    mode: "onBlur",
     resolver: zodResolver(profileSchema),
     defaultValues: {
       full_name: profile.full_name,
@@ -40,13 +40,11 @@ const ProfileEdit = ({
     },
   });
 
-  const handleSelectImage = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleSelectImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
 
     if (!file) return;
-
+    console.log(file);
     setSelectedImage(file);
 
     setPreview(URL.createObjectURL(file));

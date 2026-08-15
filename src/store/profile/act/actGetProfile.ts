@@ -30,7 +30,6 @@ const actGetProfile = createAsyncThunk(
           .eq("student_id", user.id);
 
       if (enrollmentsError) throw enrollmentsError;
-
       // Completed Lessons
       const { count: completedLessons, error: completedError } =
         await supabase

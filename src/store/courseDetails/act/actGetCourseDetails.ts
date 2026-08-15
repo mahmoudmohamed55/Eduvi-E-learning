@@ -2,7 +2,6 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import type { TCourseDetailsInfo } from "@types";
 import { supabase } from "@utils/supabase";
 
-
 const actGetCourseDetails = createAsyncThunk<
   TCourseDetailsInfo,
   string,
@@ -13,15 +12,13 @@ const actGetCourseDetails = createAsyncThunk<
   "courseDetails/actGetCourseDetails",
 
   async (slug, thunkAPI) => {
-
     const { rejectWithValue } = thunkAPI;
 
-
     try {
-
       const { data, error } = await supabase
         .from("courses")
-        .select(`
+        .select(
+          `
           id,
           title,
           slug,
@@ -66,17 +63,18 @@ const actGetCourseDetails = createAsyncThunk<
             )
           )
 
-        `)
+        `,
+        )
         .eq("slug", slug)
         .single();
 
+      if (error) {
+        if (error.code === "PGRST116") {
+          return rejectWithValue("Course not found");
+        }
 
-
-      if(error){
-        throw error;
+        return rejectWithValue(error.message);
       }
-
-
 
       const formattedData = {
         ...data,
@@ -85,34 +83,22 @@ const actGetCourseDetails = createAsyncThunk<
           ? data.instructor[0]
           : data.instructor,
 
-
-        reviews: data.reviews.map((review:any)=>({
+        reviews: data.reviews.map((review: any) => ({
           ...review,
 
           student: Array.isArray(review.student)
             ? review.student[0]
-            : review.student
-        }))
+            : review.student,
+        })),
       };
 
-
-
       return formattedData as TCourseDetailsInfo;
-
-
-
-    } catch(error){
-
+    } catch (error) {
       return rejectWithValue(
-        error instanceof Error
-        ? error.message
-        : "Something went wrong"
+        error instanceof Error ? error.message : "Something went wrong",
       );
-
     }
-
-  }
+  },
 );
-
 
 export default actGetCourseDetails;

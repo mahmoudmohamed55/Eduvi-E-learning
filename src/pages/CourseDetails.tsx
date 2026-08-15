@@ -1,13 +1,14 @@
 import CourseHero from "@components/courseDetails/CourseHero";
 import CourseReviews from "@components/courseDetails/CourseReviews";
 import CourseSidebar from "@components/courseDetails/CourseSidebar";
+import { LottieHandler } from "@components/feedback/lottie/LottieHandler";
 import useCourseDetails from "@hooks/useCourseDetails";
 
 const CourseDetails = () => {
   const { record, loading, error } = useCourseDetails();
 
-  if (loading === "pending") return <h2>Loading...</h2>;
-  if (error) return <h2>{error}</h2>;
+  if (loading === "pending") return <LottieHandler type="loading" />;
+  if (error) return <LottieHandler type="error" message={error} />;
   if (!record) return null;
 
   return (

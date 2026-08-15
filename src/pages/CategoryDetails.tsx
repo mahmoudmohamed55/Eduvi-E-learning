@@ -4,7 +4,7 @@ import { Heading } from "@components/common/heading/Heading";
 import { useCategoryDetails } from "@hooks/useCategoryDetails";
 import course from "@assets/course.png";
 
-export const CategoryDetails = () => {
+ const CategoryDetails = () => {
   const { records, loading, error } = useCategoryDetails();
   return (
     <div className="bg-surface-100 mt-4 rounded-3xl container px-3 md:px-0 pb-4">
@@ -22,3 +22,5 @@ export const CategoryDetails = () => {
     </div>
   );
 };
+
+export default CategoryDetails;

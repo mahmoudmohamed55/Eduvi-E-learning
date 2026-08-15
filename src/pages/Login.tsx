@@ -5,7 +5,7 @@ import { LuBookOpenText } from "react-icons/lu";
 import { useLogin } from "@hooks/useLogin";
 import { Input } from "@components/form/Input";
 
-export const Login = () => {
+ const Login = () => {
   const {
     register,
     handleSubmit,
@@ -95,3 +95,5 @@ export const Login = () => {
     </section>
   );
 };
+
+export default Login;

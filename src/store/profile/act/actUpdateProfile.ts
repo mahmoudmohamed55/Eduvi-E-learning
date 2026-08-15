@@ -15,7 +15,7 @@ const actUpdateProfile = createAsyncThunk(
       }
 
       let avatarUrl: string | undefined;
-
+console.log(data);
       // Upload new avatar if selected
       if (data.avatar) {
         const fileExt = data.avatar.name.split(".").pop();

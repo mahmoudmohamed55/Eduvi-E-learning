@@ -9,6 +9,7 @@ export const GridList = <T extends HasId>({
   records,
   render,
 }: GridListProps<T>) => {
+  if (records.length === 0) return null;
   return (
     <>
       {records.map((record) => (

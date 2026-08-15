@@ -4,7 +4,7 @@ import { LuBookOpenText } from "react-icons/lu";
 import { useRegister } from "@hooks/useRegister";
 import { Input } from "@components/form/Input";
 
-export const Register = () => {
+ const Register = () => {
   const {
     register,
     handleSubmit,
@@ -110,3 +110,5 @@ export const Register = () => {
     </section>
   );
 };
+
+export default Register;

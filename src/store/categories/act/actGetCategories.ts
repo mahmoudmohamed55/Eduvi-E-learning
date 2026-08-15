@@ -6,17 +6,24 @@ const actGetCategories = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const { data, error } = await supabase.from("categories").select(`
-    *,
-    courses(*)
-  `);
+  *,
+  courses(*)
+`);
 
       if (error) {
-        return rejectWithValue(error);
+        console.log("Categories Error:", error);
+        return rejectWithValue(error.message);
       }
-      console.log("data", data);
+
+      console.log("Categories Data:", data);
+
       return data;
     } catch (error) {
-      return rejectWithValue(error);
+      console.log("Categories Catch Error:", error);
+
+      return rejectWithValue(
+        error instanceof Error ? error.message : "Something went wrong",
+      );
     }
   },
 );

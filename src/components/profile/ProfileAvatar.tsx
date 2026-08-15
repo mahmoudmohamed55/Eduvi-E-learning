@@ -1,14 +1,7 @@
+import type { ProfileAvatarProps } from "@types";
 import { Camera } from "lucide-react";
 
-type ProfileAvatarProps = {
-  avatar: string;
-  fullName: string;
-  isEditing?: boolean;
-  preview?: string;
-  onSelectImage?: (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => void;
-};
+
 
 const ProfileAvatar = ({
   avatar,

@@ -58,7 +58,7 @@ const Header = () => {
           <ul className="flex items-center gap-8">
             <NavLi name="Courses" />
 
-            <NavLi name="Wishlist" />
+            <NavLi name="Favorites" />
 
             <NavLi name="Categories" />
           </ul>
@@ -124,7 +124,7 @@ const Header = () => {
             />
 
             <NavLi
-              name="Wishlist"
+              name="Favorites"
               onclick={() => setIsOpen(false)}
               icon={<HiOutlineHeart size={20} />}
             />

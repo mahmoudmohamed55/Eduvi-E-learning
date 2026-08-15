@@ -1,57 +1,109 @@
 import { MainLayout } from "@layout/MainLayout";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { lazy } from "react";
+import PageSuspenseFallback from "@components/feedback/suspense/PageSuspenseFallback";
 
-import { Home } from "@pages/Home";
-import { Register } from "@pages/Sign-up";
-import { Login } from "@pages/Login";
-import { Categories } from "@pages/Categories";
-import { CategoryDetails } from "@pages/CategoryDetails";
-import Courses from "@pages/Courses";
-import CourseDetails from "@pages/CourseDetails";
-import  Profile  from "@pages/Profile";
-
+const Home = lazy(() => import("@pages/Home"));
+const Register = lazy(() => import("@pages/Sign-up"));
+const Login = lazy(() => import("@pages/Login"));
+const Categories = lazy(() => import("@pages/Categories"));
+const CategoryDetails = lazy(() => import("@pages/CategoryDetails"));
+const Courses = lazy(() => import("@pages/Courses"));
+const CourseDetails = lazy(() => import("@pages/CourseDetails"));
+const Profile = lazy(() => import("@pages/Profile"));
+const Error404 = lazy(() => import("@pages/Error404"));
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    errorElement: <Error404 />,
     children: [
       {
         index: true,
-        element: <Home />,
+        element: (
+          <PageSuspenseFallback>
+            <Home />
+          </PageSuspenseFallback>
+        ),
       },
       {
         path: "courses",
-        element: <Courses />,
+        element: (
+          <PageSuspenseFallback>
+            <Courses />
+          </PageSuspenseFallback>
+        ),
       },
       {
         path: "categories",
-        element: <Categories />,
+        element: (
+          <PageSuspenseFallback>
+            <Categories />
+          </PageSuspenseFallback>
+        ),
       },
       {
         path: "categories/:slug",
-        element: <CategoryDetails />,
+        element: (
+          <PageSuspenseFallback>
+            <CategoryDetails />
+          </PageSuspenseFallback>
+        ),
+        loader: async ({ params }) => {
+          if (typeof params.slug !== "string" || !params.slug.trim()) {
+            throw new Error("Invalid category slug");
+          }
+        },
       },
       {
         path: "courses/:slug",
-        element: <CourseDetails />,
+        element: (
+          <PageSuspenseFallback>
+            <CourseDetails />
+          </PageSuspenseFallback>
+        ),
+        loader: async ({ params }) => {
+          if (
+            typeof params.slug !== "string" ||
+            !/^[a-zA-Z0-9_-]+$/.test(params.slug)
+          ) {
+            throw new Error("Invalid course slug");
+          }
+        },
       },
       {
         path: "categories/:slug",
-        element: <CategoryDetails />,
+        element: (
+          <PageSuspenseFallback>
+            <CategoryDetails />
+          </PageSuspenseFallback>
+        ),
       },
 
       {
         path: "profile",
-        element: <Profile />,
+        element: (
+          <PageSuspenseFallback>
+            <Profile />
+          </PageSuspenseFallback>
+        ),
       },
       {
         path: "register",
-        element: <Register />,
+        element: (
+          <PageSuspenseFallback>
+            <Register />
+          </PageSuspenseFallback>
+        ),
       },
       {
         path: "login",
-        element: <Login />,
+        element: (
+          <PageSuspenseFallback>
+            <Login />
+          </PageSuspenseFallback>
+        ),
       },
     ],
   },

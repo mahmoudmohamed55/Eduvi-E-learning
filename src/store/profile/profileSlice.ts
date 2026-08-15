@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import type { TLoading, TProfile } from "@types";
 
-
 import actUpdateProfile from "./act/actUpdateProfile";
 import actGetProfile from "./act/actGetProfile";
 
@@ -14,7 +13,7 @@ interface ProfileState {
 
 const initialState: ProfileState = {
   record: null,
-  loading: "idle",
+  loading: "pending",
   error: null,
 };
 
@@ -43,9 +42,6 @@ const profileSlice = createSlice({
         state.error = action.payload as string;
       })
 
-      // =========================
-      // Update Profile
-      // =========================
       .addCase(actUpdateProfile.pending, (state) => {
         state.loading = "pending";
         state.error = null;

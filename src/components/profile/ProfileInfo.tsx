@@ -15,7 +15,7 @@ const ProfileInfo = ({
 }: ProfileInfoProps) => {
   return (
     <div className="space-y-6">
-      {/* Name */}
+  
       <div className="text-center">
         <h2 className="text-3xl font-bold text-gray-900">
           {fullName}
@@ -28,7 +28,7 @@ const ProfileInfo = ({
       </div>
 
       <div className="divide-y rounded-2xl border border-gray-100">
-        {/* Join Date */}
+       
         <div className="flex items-center gap-4 p-4">
           <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-violet-100 text-violet-600">
             <CalendarDays size={20} />

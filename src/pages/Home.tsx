@@ -3,7 +3,7 @@ import { HeroBanner } from "@components/home/HeroBanner";
 import { MentorSection } from "@components/home/MentorSection";
 import VideoLearning from "@components/home/VideoLearning";
 
-export const Home = () => {
+ const Home = () => {
   return (
     <>
       <Hero />
@@ -13,3 +13,5 @@ export const Home = () => {
     </>
   );
 };
+
+export default Home;

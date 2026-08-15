@@ -5,7 +5,6 @@ export type TProfile = {
   phone: string;
   role: "student" | "instructor" | "admin";
   created_at: string;
-
   enrolledCourses: number;
   completedLessons: number;
   pendingLessons: number;
