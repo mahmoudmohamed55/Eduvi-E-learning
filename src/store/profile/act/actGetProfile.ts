@@ -23,35 +23,31 @@ const actGetProfile = createAsyncThunk(
       if (profileError) throw profileError;
 
       // Enrollments
-      const { count: enrolledCourses, error: enrollmentsError } =
-        await supabase
-          .from("enrollments")
-          .select("*", { count: "exact", head: true })
-          .eq("student_id", user.id);
+      const { count: enrolledCourses, error: enrollmentsError } = await supabase
+        .from("enrollments")
+        .select("*", { count: "exact", head: true })
+        .eq("student_id", user.id);
 
       if (enrollmentsError) throw enrollmentsError;
       // Completed Lessons
-      const { count: completedLessons, error: completedError } =
-        await supabase
-          .from("lesson_progress")
-          .select("*", { count: "exact", head: true })
-          .eq("student_id", user.id)
-          .eq("completed", true);
+      const { count: completedLessons, error: completedError } = await supabase
+        .from("lesson_progress")
+        .select("*", { count: "exact", head: true })
+        .eq("student_id", user.id)
+        .eq("completed", true);
 
       if (completedError) throw completedError;
 
       // Not Completed Lessons
-      const { count: pendingLessons, error: pendingError } =
-        await supabase
-          .from("lesson_progress")
-          .select("*", { count: "exact", head: true })
-          .eq("student_id", user.id)
-          .eq("completed", false);
+      const { count: pendingLessons, error: pendingError } = await supabase
+        .from("lesson_progress")
+        .select("*", { count: "exact", head: true })
+        .eq("student_id", user.id)
+        .eq("completed", false);
 
       if (pendingError) throw pendingError;
 
-      const totalLessons =
-        (completedLessons ?? 0) + (pendingLessons ?? 0);
+      const totalLessons = (completedLessons ?? 0) + (pendingLessons ?? 0);
 
       const progress =
         totalLessons === 0
@@ -68,7 +64,7 @@ const actGetProfile = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error);
     }
-  }
+  },
 );
 
 export default actGetProfile;

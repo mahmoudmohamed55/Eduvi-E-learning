@@ -61,26 +61,10 @@ const Header = () => {
             <NavLi name="Favorites" />
 
             <NavLi name="Categories" />
+            <NavLi name="Enrollments" />
           </ul>
         </nav>
         <div className="hidden md:flex items-center gap-7">
-          <Link
-            to="/cart"
-            className="group flex items-center gap-2 text-sm font-medium"
-          >
-            <div className="relative">
-              <HiOutlineShoppingBag
-                size={22}
-                className="text-secondary-500 transition group-hover:scale-110"
-              />
-
-              <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-secondary-500 text-[10px] font-bold text-white">
-                0
-              </span>
-            </div>
-
-            <span className="hidden md:block text-ink-900 hover:text-primary-600">Cart</span>
-          </Link>
 
           <Link
             to="/profile"
@@ -130,9 +114,9 @@ const Header = () => {
             />
 
             <NavLi
-              name="Cart"
+              name="Enrollment"
               onclick={() => setIsOpen(false)}
-              icon={<HiOutlineShoppingBag size={20} />}
+           
             />
           </ul>
 

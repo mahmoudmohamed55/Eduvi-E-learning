@@ -13,6 +13,7 @@ type TCourse = {
     full_name: string;
     avatar: string;
   };
+  isLiked?: boolean;
 };
 
 export type { TCourse };

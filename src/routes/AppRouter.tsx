@@ -12,6 +12,7 @@ const CategoryDetails = lazy(() => import("@pages/CategoryDetails"));
 const Courses = lazy(() => import("@pages/Courses"));
 const CourseDetails = lazy(() => import("@pages/CourseDetails"));
 const Profile = lazy(() => import("@pages/Profile"));
+const Favorites = lazy(() => import("@pages/Favorites"));
 const Error404 = lazy(() => import("@pages/Error404"));
 const router = createBrowserRouter([
   {
@@ -32,6 +33,14 @@ const router = createBrowserRouter([
         element: (
           <PageSuspenseFallback>
             <Courses />
+          </PageSuspenseFallback>
+        ),
+      },
+      {
+        path: "favorites",
+        element: (
+          <PageSuspenseFallback>
+            <Favorites />
           </PageSuspenseFallback>
         ),
       },
