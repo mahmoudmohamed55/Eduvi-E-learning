@@ -1,7 +1,9 @@
 
 import heroImage from "@assets/HeroBanner.png";
+import { useNavigate } from "react-router-dom";
 
 export const HeroBanner = () => {
+  const navigate = useNavigate();
   return (
 <section className="py-16">
   <div className="">
@@ -24,12 +26,12 @@ export const HeroBanner = () => {
           for high-definition, generally any video.
         </p>
 
-        <button className="mt-8 rounded-lg bg-primary-600 px-7 py-4 font-semibold text-white transition hover:bg-primary-700">
+        <button onClick={() => navigate("/register")} className="mt-8 rounded-lg bg-primary-600 px-7 py-4 font-semibold text-white transition hover:bg-primary-700">
           Registration Now
         </button>
       </div>
 
-      {/* Right */}
+     
       <div className="flex justify-end">
         <img
           src={heroImage}

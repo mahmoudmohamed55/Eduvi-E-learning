@@ -14,6 +14,7 @@ type TCourse = {
     avatar: string;
   };
   isLiked?: boolean;
+  isEnrolled?: boolean;
 };
 
 export type { TCourse };

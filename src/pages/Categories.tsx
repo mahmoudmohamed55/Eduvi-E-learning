@@ -7,8 +7,7 @@ import Loading from "@components/feedback/loading/Loading";
 import CategoryCardSkeleton from "@components/feedback/skeletons/categoryskeleton/CategoryCardSkeleton";
 const Categories = () => {
   const { records, loading, error } = useCategories();
-  console.log("CATEGORY LOADING:", loading);
-  console.log("CATEGORY ERROR:", error);
+ 
   return (
     <>
       <Heading

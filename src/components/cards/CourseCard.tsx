@@ -20,6 +20,7 @@ const CourseCard = ({
   price,
   description,
   isLiked,
+  isEnrolled,
 }: TCourse) => {
   const dispatch = useAppDispatch();
 
@@ -98,15 +99,15 @@ const CourseCard = ({
         </div>
 
         <div className="mt-5 flex items-center justify-between">
-          <span className="text-2xl font-bold text-ink-900">
-            {price === 0 ? "Free" : `$${price}`}
+          <span className="text-2xl font-bold text-ink-900 ">
+            {price === 0 ? "Free" : isEnrolled ? "Enrolled" : `$${price}`}
           </span>
 
           <Link
             to={`/courses/${slug}`}
             className="flex items-center gap-2 rounded-lg border border-primary-600 px-4 py-2 text-sm font-semibold text-primary-600 transition-all duration-300 group-hover:bg-primary-600 group-hover:text-white"
           >
-            Enroll Now
+            {isEnrolled ? "Continue Learning" : "Enroll Now"}
             <HiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
         </div>

@@ -4,7 +4,7 @@ import type { TCourse, TLoading } from "@types";
 
 import actLikeToggle from "./act/actLikeToggle";
 import actGetWishList from "./act/actGetWishList";
-import actGetWishListCourses from "./act/actGetWishListCourses";
+import actGetWishListCourses from "../../../actGetWishListCourses";
 
 interface WishlistState {
   items: string[];
@@ -82,7 +82,7 @@ const wishlistSlice = createSlice({
     });
 
     builder.addCase(actGetWishListCourses.fulfilled, (state, action) => {
-      console.log("✅ WISHLIST COURSES FULFILLED:", action.payload);
+    
 
       state.loading = "succeeded";
       state.courseFullInfo = action.payload;

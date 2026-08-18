@@ -11,6 +11,7 @@ export const useCourses = () => {
   const [searchParams] = useSearchParams();
 
   const { items } = useAppSelector((state) => state.wishlist);
+  const { items: enrollments } = useAppSelector((state) => state.enrollments);
   const page = Number(searchParams.get("page") || 1);
 
   const {
@@ -22,6 +23,7 @@ export const useCourses = () => {
   const fullRecord = data.map((course) => ({
     ...course,
     isLiked: items.includes(course.id),
+    isEnrolled: enrollments.includes(course.id),
   }));
   useEffect(() => {
     dispatch(actGetCourses(page));

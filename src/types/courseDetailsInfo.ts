@@ -39,4 +39,5 @@ export type TCourseDetailsInfo = {
       avatar: string;
     };
   }[];
+  isEnrolled?: boolean;
 };

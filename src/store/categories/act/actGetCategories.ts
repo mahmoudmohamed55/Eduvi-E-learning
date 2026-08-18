@@ -11,15 +11,15 @@ const actGetCategories = createAsyncThunk(
 `);
 
       if (error) {
-        console.log("Categories Error:", error);
+
         return rejectWithValue(error.message);
       }
 
-      console.log("Categories Data:", data);
+   
 
       return data;
     } catch (error) {
-      console.log("Categories Catch Error:", error);
+    
 
       return rejectWithValue(
         error instanceof Error ? error.message : "Something went wrong",

@@ -23,9 +23,9 @@ const ProfileEdit = ({
   onSubmit,
 }: ProfileEditProps) => {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
-  console.log(selectedImage);
+ 
   const [preview, setPreview] = useState<string>();
-  console.log(preview);
+ 
 
   const {
     register,
@@ -44,7 +44,7 @@ const ProfileEdit = ({
     const file = e.target.files?.[0];
 
     if (!file) return;
-    console.log(file);
+  
     setSelectedImage(file);
 
     setPreview(URL.createObjectURL(file));

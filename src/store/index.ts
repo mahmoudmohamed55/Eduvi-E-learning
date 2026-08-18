@@ -1,10 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import auth from "./auth/authSlice";
-import categories from "./categories/categoriesSlice";
-import courses from "./courses/coursesSlice";
-import courseDetails from "./courseDetails/courseDetailsSlice";
-import Profile from "./profile/profileSlice";
-import wishlist from "./wishList/wishlistSlice";
+
 import {
   persistStore,
   persistReducer,
@@ -15,16 +10,54 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+
+
+import authReducer from "./auth/authSlice";
+import categories from "./categories/categoriesSlice";
+import courses from "./courses/coursesSlice";
+import courseDetails from "./courseDetails/courseDetailsSlice";
+import Profile from "./profile/profileSlice";
+import wishlist from "./wishList/wishlistSlice";
+import enrollments from "./enrollments/enrollmentSlice";
+import storage from "./storage";
+
+const authPersistConfig = {
+  key: "auth",
+  storage,
+  whitelist: ["user", "profile"],
+};
+
+const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
+
+/* =====================================================
+   CART
+===================================================== */
+
+const enrollmentsPersistConfig = {
+  key: "enrollments",
+  storage,
+  whitelist: ["items"],
+};
+
+const persistedCartReducer = persistReducer(
+  enrollmentsPersistConfig,
+  enrollments,
+);
+
+
 export const store = configureStore({
   reducer: {
-    auth,
+    auth: persistedAuthReducer,
+
     categories,
     courses,
     courseDetails,
     Profile,
     wishlist,
+    enrollments: persistedCartReducer,
+
   },
+
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
@@ -33,7 +66,16 @@ export const store = configureStore({
     }),
 });
 
-// Infer the `RootState` and `AppDispatch` types from the store itself
+/* =====================================================
+   TYPES
+===================================================== */
+
 export type RootState = ReturnType<typeof store.getState>;
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+
 export type AppDispatch = typeof store.dispatch;
+
+/* =====================================================
+   PERSISTOR
+===================================================== */
+
+export const persistor = persistStore(store);

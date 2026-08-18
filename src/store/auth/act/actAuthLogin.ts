@@ -19,7 +19,7 @@ const actAuthLogin = createAsyncThunk(
     if (error) {
      return rejectWithValue(error.message);
     }
-    console.log("signInData", signInData);
+   
     return signInData;
   },
 );

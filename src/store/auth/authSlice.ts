@@ -3,15 +3,27 @@ import type { TLoading } from "@types";
 import actAuthRegister from "./act/actAuthRegister";
 import actAuthLogin from "./act/actAuthLogin";
 import type { User } from "@supabase/supabase-js";
+import actGetProfile from "./act/actGetProfile";
+export type TUserRole = "student" | "instructor" | "admin";
+
+export interface TProfile {
+  id: string;
+  full_name: string;
+  avatar: string | null;
+  phone: string | null;
+  role: TUserRole;
+}
 interface AuthState {
   user: User | null;
   accessToken: string | null;
+  profile: TProfile | null;
   loading: TLoading;
   error: string | null;
 }
 const initialState: AuthState = {
   user: null,
   accessToken: null,
+  profile: null,
   loading: "idle",
   error: null,
 };
@@ -40,7 +52,6 @@ const authSlice = createSlice({
       state.error = action.payload as string;
     });
 
-    // Login
     builder.addCase(actAuthLogin.pending, (state) => {
       state.loading = "pending";
       state.error = null;
@@ -51,6 +62,20 @@ const authSlice = createSlice({
       state.accessToken = action.payload?.session?.access_token || null;
     });
     builder.addCase(actAuthLogin.rejected, (state, action) => {
+      state.loading = "failed";
+      state.error = action.payload as string;
+    });
+    builder.addCase(actGetProfile.pending, (state) => {
+      state.loading = "pending";
+      state.error = null;
+    });
+
+    builder.addCase(actGetProfile.fulfilled, (state, action) => {
+      state.loading = "succeeded";
+      state.profile = action.payload;
+    });
+
+    builder.addCase(actGetProfile.rejected, (state, action) => {
       state.loading = "failed";
       state.error = action.payload as string;
     });

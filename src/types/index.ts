@@ -5,3 +5,5 @@ export type { TProfile } from "./profile";
 export type { TCourseDetailsInfo } from "./courseDetailsInfo";
 export type { ProfileAvatarProps } from "./profile";
 export type { TUpdateProfile } from "./profile";
+export type { TAuthResponse } from "./user";
+export type { TEnrollmentCourse } from "./Enrollment";

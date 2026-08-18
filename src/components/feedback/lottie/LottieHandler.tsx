@@ -1,5 +1,6 @@
 import errorAnimation from "@assets/lottiefiles/404 blue.json";
 import loadingAnimation from "@assets/lottiefiles/loading.json";
+import successAnimation from "@assets/lottiefiles/Success Animation.json";
 import * as LottieModule from "lottie-react";
 
 const Lottie =
@@ -8,6 +9,7 @@ const Lottie =
 const lottieFiles = {
   error: errorAnimation,
   loading: loadingAnimation,
+  success: successAnimation,
 };
 
 type LottieHandlerProps = {

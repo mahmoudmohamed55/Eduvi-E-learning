@@ -10,7 +10,6 @@ export const useCategories = () => {
     (state) => state.categories,
   );
 
-  console.log("records", records);
 
   useEffect(() => {
     dispatch(actGetCategories());

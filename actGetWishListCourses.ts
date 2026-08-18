@@ -12,15 +12,15 @@ const actGetWishListCourses = createAsyncThunk<
 
   async (courseIds, { rejectWithValue }) => {
     try {
-      console.log("1️⃣ COURSE IDS:", courseIds);
+     
 
       if (!courseIds.length) {
-        console.log("2️⃣ NO COURSE IDS");
+     
 
         return [];
       }
 
-      console.log("3️⃣ BEFORE COURSES QUERY");
+     
 
       const { data: courses, error: coursesError } = await supabase
         .from("courses")
@@ -40,22 +40,18 @@ const actGetWishListCourses = createAsyncThunk<
         )
         .in("id", courseIds);
 
-      console.log("4️⃣ AFTER COURSES QUERY");
-
-      console.log("COURSES:", courses);
-      console.log("COURSES ERROR:", coursesError);
-
+    
       if (coursesError) {
         return rejectWithValue(coursesError.message);
       }
 
       if (!courses) {
-        console.log("5️⃣ COURSES IS NULL");
+       
 
         return [];
       }
 
-      console.log("6️⃣ COURSES LENGTH:", courses.length);
+     
 
       // Get instructor IDs
       const instructorIds = [
@@ -64,7 +60,7 @@ const actGetWishListCourses = createAsyncThunk<
         ),
       ];
 
-      console.log("7️⃣ INSTRUCTOR IDS:", instructorIds);
+     
 
       if (!instructorIds.length) {
         return courses.map((course) => ({
@@ -77,7 +73,7 @@ const actGetWishListCourses = createAsyncThunk<
         })) as TCourse[];
       }
 
-      console.log("8️⃣ BEFORE PROFILES QUERY");
+     
 
       const { data: instructors, error: instructorsError } = await supabase
         .from("profiles")
@@ -90,11 +86,7 @@ const actGetWishListCourses = createAsyncThunk<
         )
         .in("id", instructorIds);
 
-      console.log("9️⃣ AFTER PROFILES QUERY");
-
-      console.log("INSTRUCTORS:", instructors);
-      console.log("INSTRUCTORS ERROR:", instructorsError);
-
+     
       if (instructorsError) {
         return rejectWithValue(instructorsError.message);
       }
@@ -124,7 +116,7 @@ const actGetWishListCourses = createAsyncThunk<
         };
       });
 
-      console.log("🔟 FINAL COURSES:", finalCourses);
+    
 
       return finalCourses;
     } catch (error) {

@@ -30,7 +30,7 @@ const actGetCoursesByCategory = createAsyncThunk(
     if (coursesError) {
       return rejectWithValue(coursesError);
     }
-   console.log("courses", courses);
+  
     return courses;
   },
 );

@@ -35,7 +35,7 @@ const courseDetailsSlice = createSlice({
       .addCase(actGetCourseDetails.fulfilled, (state, action) => {
         state.loading = "succeeded";
         state.record = action.payload;
-        console.log("Course details fetched successfully:", action.payload);
+        
       })
       .addCase(actGetCourseDetails.rejected, (state, action) => {
         state.loading = "failed";

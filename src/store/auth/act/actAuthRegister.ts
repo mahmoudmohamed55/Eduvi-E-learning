@@ -44,7 +44,7 @@ const actAuthRegister = createAsyncThunk(
         role: "student",
       });
     }
-    console.log("signUpData", signUpData);
+  
     return signUpData;
   },
 );
