@@ -3,6 +3,7 @@ import CourseReviews from "@components/courseDetails/CourseReviews";
 import CourseSidebar from "@components/courseDetails/CourseSidebar";
 import { LottieHandler } from "@components/feedback/lottie/LottieHandler";
 import useCourseDetails from "@hooks/useCourseDetails";
+;
 
 const CourseDetails = () => {
   const { record, loading, error } = useCourseDetails();

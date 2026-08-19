@@ -36,6 +36,13 @@ const authSlice = createSlice({
       state.loading = "idle";
       state.error = null;
     },
+    logout(state) {
+      state.user = null;
+      state.accessToken = null;
+      state.profile = null;
+      state.loading = "idle";
+      state.error = null;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(actAuthRegister.pending, (state) => {
@@ -60,6 +67,7 @@ const authSlice = createSlice({
       state.loading = "succeeded";
       state.user = action.payload?.user || null;
       state.accessToken = action.payload?.session?.access_token || null;
+      
     });
     builder.addCase(actAuthLogin.rejected, (state, action) => {
       state.loading = "failed";
@@ -84,4 +92,4 @@ const authSlice = createSlice({
 
 export default authSlice.reducer;
 
-export const { resetUI } = authSlice.actions;
+export const { resetUI, logout } = authSlice.actions;

@@ -29,7 +29,14 @@ const wishlistSlice = createSlice({
 
   initialState,
 
-  reducers: {},
+  reducers: {
+    clearWishlist: (state) => {
+      state.items = [];
+      state.courseFullInfo = [];
+      state.loading = "idle";
+      state.error = null;
+    },
+  },
 
   extraReducers: (builder) => {
     builder.addCase(actGetWishList.pending, (state) => {
@@ -82,8 +89,6 @@ const wishlistSlice = createSlice({
     });
 
     builder.addCase(actGetWishListCourses.fulfilled, (state, action) => {
-    
-
       state.loading = "succeeded";
       state.courseFullInfo = action.payload;
     });
@@ -101,5 +106,7 @@ const wishlistSlice = createSlice({
 });
 
 export { actLikeToggle, actGetWishList, actGetWishListCourses };
+
+export const { clearWishlist } = wishlistSlice.actions;
 
 export default wishlistSlice.reducer;

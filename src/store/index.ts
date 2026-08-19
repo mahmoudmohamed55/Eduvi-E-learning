@@ -29,9 +29,6 @@ const authPersistConfig = {
 
 const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
 
-/* =====================================================
-   CART
-===================================================== */
 
 const enrollmentsPersistConfig = {
   key: "enrollments",

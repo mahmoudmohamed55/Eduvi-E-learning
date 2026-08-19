@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { lazy } from "react";
 import PageSuspenseFallback from "@components/feedback/suspense/PageSuspenseFallback";
 
-
+import ProtectedRoute from "@routes/ProtectedRoute";
 const Home = lazy(() => import("@pages/Home"));
 const Register = lazy(() => import("@pages/Sign-up"));
 const Login = lazy(() => import("@pages/Login"));
@@ -38,14 +38,7 @@ const router = createBrowserRouter([
           </PageSuspenseFallback>
         ),
       },
-      {
-        path: "favorites",
-        element: (
-          <PageSuspenseFallback>
-            <Favorites />
-          </PageSuspenseFallback>
-        ),
-      },
+
       {
         path: "categories",
         element: (
@@ -101,12 +94,25 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "enrollments",
-        element: (
-          <PageSuspenseFallback>
-            <Enrollments />
-          </PageSuspenseFallback>
-        ),
+        element: <ProtectedRoute />,
+        children: [
+          {
+            path: "enrollments",
+            element: (
+              <PageSuspenseFallback>
+                <Enrollments />
+              </PageSuspenseFallback>
+            ),
+          },
+          {
+            path: "favorites",
+            element: (
+              <PageSuspenseFallback>
+                <Favorites />
+              </PageSuspenseFallback>
+            ),
+          },
+        ],
       },
       {
         path: "register",

@@ -1,24 +1,24 @@
 import { useEffect } from "react";
 
 import { useAppDispatch, useAppSelector } from "@store/hooks";
+import useAuth from "@hooks/useAuth";
 
 import actGetEnrollments from "@store/enrollments/act/actGetenrollments";
-import { clearEnrollments } from "@store/enrollments/enrollmentSlice";
 
 const useEnrollments = () => {
   const dispatch = useAppDispatch();
+
+  const { user } = useAuth();
 
   const { records, loading, error } = useAppSelector(
     (state) => state.enrollments,
   );
 
   useEffect(() => {
-    dispatch(actGetEnrollments());
-
-    return () => {
-      dispatch(clearEnrollments());
-    };
-  }, [dispatch]);
+    if (user?.id) {
+      dispatch(actGetEnrollments());
+    }
+  }, [user?.id, dispatch]);
 
   return {
     records,

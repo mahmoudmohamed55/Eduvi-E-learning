@@ -9,19 +9,20 @@ import {
   HiOutlineBookOpen,
 } from "react-icons/hi2";
 
-import { FiLogOut, FiUser } from "react-icons/fi";
+import { FiGrid, FiLogOut, FiUser } from "react-icons/fi";
 import { BookOpenText } from "lucide-react";
 
 import { NavLi } from "./NavLi";
 import useHeader from "@hooks/useHeader";
 
 const Header = () => {
-  const { isOpen, setIsOpen, handleLogout, data, loading } = useHeader();
+  const { isOpen, setIsOpen, handleLogout, data, loading, isAdmin } =
+    useHeader();
 
   return (
     <header className="sticky left-0 right-0 top-2 z-999 rounded-2xl border-b border-neutral-200 bg-white">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
-        {/* Logo */}
+        
         <Link to="/" className="flex items-center gap-2">
           <BookOpenText
             size={30}
@@ -34,7 +35,7 @@ const Header = () => {
           </h2>
         </Link>
 
-        {/* Mobile Menu Button */}
+   
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="
@@ -49,40 +50,42 @@ const Header = () => {
           {isOpen ? <HiOutlineXMark size={24} /> : <HiOutlineBars3 size={24} />}
         </button>
 
-        {/* Desktop Navigation */}
         <nav className="hidden md:block">
           <ul className="flex items-center gap-0 sm:gap-4 md:gap-3 lg:gap-8">
             <NavLi name="Courses" />
-            <NavLi name="Favorites" />
             <NavLi name="Categories" />
+            <NavLi name="Favorites" />
             <NavLi name="Enrollments" />
           </ul>
         </nav>
 
-        {/* User Actions */}
         <div className="hidden items-center gap-7 md:flex">
           {loading ? (
-            // Initial loading only
             <div className="flex items-center gap-5">
               <div className="h-5 w-20 animate-pulse rounded-md bg-neutral-200" />
               <div className="h-6 w-6 animate-pulse rounded-full bg-neutral-200" />
             </div>
           ) : data?.user ? (
             <>
-              {/* My Account */}
               <Link
-                to="/profile"
+                to={isAdmin ? "/dashboard" : "/profile"}
                 className="group flex items-center gap-2 text-sm font-medium text-ink-900 transition hover:text-primary-600"
               >
-                <span>Profile</span>
+                <span>{isAdmin ? "Dashboard" : "Profile"}</span>
 
-                <FiUser
-                  size={21}
-                  className="text-primary-600 transition group-hover:scale-110"
-                />
+                {isAdmin ? (
+                  <FiGrid
+                    size={21}
+                    className="text-primary-600 transition group-hover:scale-110"
+                  />
+                ) : (
+                  <FiUser
+                    size={21}
+                    className="text-primary-600 transition group-hover:scale-110"
+                  />
+                )}
               </Link>
 
-              {/* Logout */}
               <button
                 onClick={handleLogout}
                 className="group flex cursor-pointer items-center gap-2 text-sm font-medium text-ink-900 transition hover:text-red-500"
@@ -96,17 +99,20 @@ const Header = () => {
               </button>
             </>
           ) : (
-            <Link
-              to="/login"
-              className="group flex items-center gap-2 text-sm font-medium text-ink-900 transition hover:text-primary-600"
-            >
-              <span>Login</span>
-
-              <FiUser
-                size={21}
-                className="text-primary-600 transition group-hover:scale-110"
-              />
-            </Link>
+            <>
+              <Link
+                to="/login"
+                className="group flex items-center gap-2 text-sm font-medium text-ink-900 transition hover:text-primary-600"
+              >
+                <span>Login</span>
+              </Link>
+              <Link
+                to="/register"
+                className="group flex items-center gap-2 text-sm font-medium text-ink-900 transition hover:text-primary-600"
+              >
+                <span>Sign Up</span>
+              </Link>
+            </>
           )}
         </div>
       </div>
@@ -128,17 +134,15 @@ const Header = () => {
             />
 
             <NavLi
-              name="Categories"
-              onclick={() => setIsOpen(false)}
-              icon={<HiOutlineSquares2X2 size={20} />}
-            />
-
-            <NavLi
               name="Favorites"
               onclick={() => setIsOpen(false)}
               icon={<HiOutlineHeart size={20} />}
             />
-
+            <NavLi
+              name="Categories"
+              onclick={() => setIsOpen(false)}
+              icon={<HiOutlineSquares2X2 size={20} />}
+            />
             <NavLi
               name="Enrollments"
               onclick={() => setIsOpen(false)}
@@ -152,7 +156,7 @@ const Header = () => {
             ) : data?.user ? (
               <>
                 <Link
-                  to="/profile"
+                  to={isAdmin ? "/dashboard" : "/profile"}
                   onClick={() => setIsOpen(false)}
                   className="
                   flex items-center justify-center rounded-xl
@@ -160,7 +164,7 @@ const Header = () => {
                   transition hover:bg-primary-700
                 "
                 >
-                  My Account
+                  {isAdmin ? "Dashboard" : "Profile"}
                 </Link>
                 <button
                   onClick={() => {
@@ -177,17 +181,32 @@ const Header = () => {
                 </button>
               </>
             ) : (
-              <Link
-                to="/login"
-                onClick={() => setIsOpen(false)}
-                className="
+              <>
+                <Link
+                  to="/login"
+                  onClick={() => setIsOpen(false)}
+                  className="
+                  flex items-center justify-center rounded-xl
+                  bg-primary-600 px-5 py-3 font-semibold text-white
+                  transition hover:bg-primary-700
+                  mb-3
+                "
+                >
+                  Login
+                </Link>
+                
+                <Link
+                  to="/register"
+                  onClick={() => setIsOpen(false)}
+                  className="
                   flex items-center justify-center rounded-xl
                   bg-primary-600 px-5 py-3 font-semibold text-white
                   transition hover:bg-primary-700
                 "
-              >
-                Login
-              </Link>
+                >
+                  Sign Up
+                </Link>
+              </>
             )}
           </div>
         </div>

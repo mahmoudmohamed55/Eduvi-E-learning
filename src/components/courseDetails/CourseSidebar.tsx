@@ -1,9 +1,11 @@
 import { LottieHandler } from "@components/feedback/lottie/LottieHandler";
+import useAuth from "@hooks/useAuth";
 import actAddEnrollments from "@store/enrollments/act/actAddenrollments";
 import { useAppDispatch } from "@store/hooks";
 import type { TCourseDetailsInfo } from "@types";
 import { useState } from "react";
 import { FaStar } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 type CourseSidebarProps = {
   course: TCourseDetailsInfo;
@@ -12,7 +14,8 @@ type CourseSidebarProps = {
 const CourseSidebar = ({ course }: CourseSidebarProps) => {
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
-
+  const { user } = useAuth();
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const totalLessons = course.sections.reduce(
@@ -29,23 +32,23 @@ const CourseSidebar = ({ course }: CourseSidebarProps) => {
       : "0.0";
 
   const handlePurchase = async () => {
+    if (!user) {
+      navigate("/login");
+    }
     try {
       setLoading(true);
       setSuccess(false);
 
       await dispatch(actAddEnrollments(course.id!)).unwrap();
 
-      // هتتنفذ فقط لو العملية نجحت
       setSuccess(true);
     } catch (error) {
-      // العملية فشلت
       console.error("Enrollment failed:", error);
       setSuccess(false);
     } finally {
       setLoading(false);
     }
   };
-
   return (
     <aside
       className="

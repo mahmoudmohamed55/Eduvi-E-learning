@@ -11,8 +11,6 @@ import GraduationCapImg from "@assets/category.png";
 const Enrollments = () => {
   const { records, loading, error } = useEnrollments();
 
- 
-
   return (
     <>
       <Heading
@@ -31,8 +29,6 @@ const Enrollments = () => {
         }
       >
         <div className="container mb-8 mt-6">
-          {/* ================= Header ================= */}
-
           <div className="mb-6 flex items-center justify-between">
             <div>
               <h2 className="text-2xl font-bold text-ink-900">Your Courses</h2>
@@ -43,8 +39,6 @@ const Enrollments = () => {
               </p>
             </div>
           </div>
-
-          {/* ================= Empty State ================= */}
 
           {records.length === 0 ? (
             <div className="flex min-h-80 flex-col items-center justify-center rounded-3xl border border-dashed border-surface-400 bg-surface-50 px-6 text-center">
@@ -62,8 +56,6 @@ const Enrollments = () => {
               </p>
             </div>
           ) : (
-            /* ================= Courses ================= */
-
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {records.map((course) => (
                 <EnrollmentCard key={course.id} {...course} />

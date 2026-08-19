@@ -20,13 +20,17 @@ const initialState: ProfileState = {
 const profileSlice = createSlice({
   name: "profile",
   initialState,
-  reducers: {},
+  reducers: {
+    clearProfile: (state) => {
+      state.record = null;
+      state.loading = "idle";
+      state.error = null;
+    },
+  },
 
   extraReducers: (builder) => {
     builder
-      // =========================
-      // Get Profile
-      // =========================
+
       .addCase(actGetProfile.pending, (state) => {
         state.loading = "pending";
         state.error = null;
@@ -64,5 +68,7 @@ const profileSlice = createSlice({
       });
   },
 });
+
+export const { clearProfile } = profileSlice.actions;
 
 export default profileSlice.reducer;

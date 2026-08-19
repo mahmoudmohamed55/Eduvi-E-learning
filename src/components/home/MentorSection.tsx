@@ -1,13 +1,13 @@
 import { ArrowRight } from "lucide-react";
 import mentorImage from "@assets/mentor.png";
 import subcribeImage from "@assets/subscribe.png";
+import { Navigate } from "react-router-dom";
 
 export const MentorSection = () => {
   return (
     <section className="py-20">
       <div className="">
         <div className="grid items-center gap-16 lg:grid-cols-2">
-
           <div className="flex justify-center">
             <img
               src={mentorImage}
@@ -15,7 +15,6 @@ export const MentorSection = () => {
               className="w-full max-w-120 object-contain rounded-2xl"
             />
           </div>
-
 
           <div className="max-w-md px-4 ">
             <h2 className="text-4xl font-bold leading-tight text-ink-900">
