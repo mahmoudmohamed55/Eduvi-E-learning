@@ -1,4 +1,4 @@
-import { Volume2, Video, PlayCircle, ChevronUp, PhoneOff } from "lucide-react";
+import { ChevronUp, PhoneOff } from "lucide-react";
 
 import programmingTeacher from "@assets/landing.png";
 import dots from "@assets/dots.png";

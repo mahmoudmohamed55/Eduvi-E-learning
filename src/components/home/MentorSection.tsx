@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import mentorImage from "@assets/mentor.png";
 import subcribeImage from "@assets/subscribe.png";
-import { Navigate } from "react-router-dom";
+
 
 export const MentorSection = () => {
   return (

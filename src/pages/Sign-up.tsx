@@ -8,13 +8,11 @@ import { Input } from "@components/form/Input";
   const {
     register,
     handleSubmit,
-    watch,
+ 
     errors,
     onSubmit,
     error,
-    loading,
-    accessToken,
-    navigate,
+
   } = useRegister();
   return (
     <section className="min-h-[90vh] my-5 bg-surface-100">

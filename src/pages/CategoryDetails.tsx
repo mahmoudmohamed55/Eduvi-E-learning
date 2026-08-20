@@ -5,7 +5,7 @@ import { useCategoryDetails } from "@hooks/useCategoryDetails";
 import course from "@assets/course.png";
 
  const CategoryDetails = () => {
-  const { records, loading, error } = useCategoryDetails();
+  const { records, } = useCategoryDetails();
   return (
     <div className="bg-surface-100 mt-4 rounded-3xl container px-3 md:px-0 pb-4">
       <Heading

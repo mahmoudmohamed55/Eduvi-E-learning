@@ -1,12 +1,8 @@
 import heroImage from "@assets/4c85afde-3676-441f-8958-77af321c771a.png";
 import {
-  Code2,
-  Brain,
-  ShieldCheck,
-  ChartColumn,
   ArrowRight,
 } from "lucide-react";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const Hero = () => {
   return (

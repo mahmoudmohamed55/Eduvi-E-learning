@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { supabase } from "@utils/supabase";
-import type actAuthRegister from "./actAuthRegister";
+
 
 type TAuthLogin = {
   email: string;
