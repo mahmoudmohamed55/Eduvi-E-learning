@@ -1,3 +1,5 @@
+export type TCourseLevel = "beginner" | "intermediate" | "advanced";
+
 type TCourse = {
   id: string;
   title: string;
@@ -8,7 +10,7 @@ type TCourse = {
   price: number;
   category_id?: string;
   instructor_id?: string;
-  level: "beginner" | "intermediate" | "advanced";
+  level: TCourseLevel;
   instructor: {
     full_name: string;
     avatar: string;

@@ -18,6 +18,7 @@ export default defineConfig({
       "@hooks": path.resolve(__dirname, "./src/hooks"),
       "@validations": path.resolve(__dirname, "./src/validations"),
       "@service": path.resolve(__dirname, "./src/service"),
+      "@dashboard": path.resolve(__dirname, "./src/dashboard"),
     },
   },
 });

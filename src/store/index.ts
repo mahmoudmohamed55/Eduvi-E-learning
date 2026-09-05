@@ -19,6 +19,7 @@ import courseDetails from "./courseDetails/courseDetailsSlice";
 import Profile from "./profile/profileSlice";
 import wishlist from "./wishList/wishlistSlice";
 import enrollments from "./enrollments/enrollmentSlice";
+
 import storage from "./storage";
 
 const authPersistConfig = {
@@ -45,7 +46,6 @@ const persistedCartReducer = persistReducer(
 export const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
-
     categories,
     courses,
     courseDetails,
@@ -63,16 +63,12 @@ export const store = configureStore({
     }),
 });
 
-/* =====================================================
-   TYPES
-===================================================== */
+
 
 export type RootState = ReturnType<typeof store.getState>;
 
 export type AppDispatch = typeof store.dispatch;
 
-/* =====================================================
-   PERSISTOR
-===================================================== */
+
 
 export const persistor = persistStore(store);

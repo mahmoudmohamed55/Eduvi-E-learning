@@ -11,7 +11,7 @@ const useAuth = () => {
     (state) => state.auth,
   );
 
-
+console.log("profile", profile);
   useEffect(() => {
     if (user?.id) {
       dispatch(actGetProfile(user.id));

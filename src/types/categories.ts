@@ -8,4 +8,5 @@ type TCategory = {
   description: string;
   courses: TCourse[];
 };
+
 export type { TCategory };
