@@ -14,9 +14,16 @@ const DashboardProtectedRoute = () => {
     return <LottieHandler type="loading" />;
   }
 
-
   if (profile?.role !== "admin") {
-    return <Navigate to="/" replace />;
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center gap-4">
+        <LottieHandler
+          type="error"
+          message="You do not have access to this page."
+          BackToHomeButton={true}
+        />
+      </div>
+    );
   }
 
   return <Outlet />;

@@ -7,3 +7,4 @@ export type { ProfileAvatarProps } from "./profile";
 export type { TUpdateProfile } from "./profile";
 export type { TAuthResponse } from "./user";
 export type { TEnrollmentCourse } from "./Enrollment";
+export type { TDashboardCategory, TCategoryFormValues, TCategoryPayload } from "./dashboard/dashboardcategory";

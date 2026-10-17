@@ -1,25 +1,31 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import type { TCategoryPayload, TDashboardCategory } from "@types";
 import { supabase } from "@utils/supabase";
-import type { TCategory } from "@types";
 
-export type TUpdateCategoryPayload = {
+
+type TUpdateCategoryArgs = {
   id: string;
-  payload: Partial<Omit<TCategory, "id" | "courses">>;
+  category: TCategoryPayload;
 };
 
-const actUpdateCategory = createAsyncThunk<TCategory, TUpdateCategoryPayload>(
-  "dashboard/categories/update",
-  async ({ id, payload }, { rejectWithValue }) => {
+export const actUpdateCategory = createAsyncThunk<
+  TDashboardCategory,
+  TUpdateCategoryArgs,
+  { rejectValue: string }
+>(
+  "dashboard/categories/updateCategory",
+  async ({ id, category }, thunkAPI) => {
     const { data, error } = await supabase
       .from("categories")
-      .update(payload)
+      .update(category)
       .eq("id", id)
-      .select()
+      .select("*")
       .single();
 
-    if (error) return rejectWithValue(error.message);
-    return data as TCategory;
-  }
-);
+    if (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
 
-export default actUpdateCategory;
+    return data as TDashboardCategory;
+  },
+);

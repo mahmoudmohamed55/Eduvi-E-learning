@@ -21,6 +21,7 @@ import wishlist from "./wishList/wishlistSlice";
 import enrollments from "./enrollments/enrollmentSlice";
 
 import storage from "./storage";
+import dashboardReducer from "./dashboard/dashboardReducer";
 
 const authPersistConfig = {
   key: "auth",
@@ -52,6 +53,7 @@ export const store = configureStore({
     Profile,
     wishlist,
     enrollments: persistedCartReducer,
+    dashboard: dashboardReducer,
 
   },
 
