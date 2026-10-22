@@ -8,3 +8,4 @@ export type { TUpdateProfile } from "./profile";
 export type { TAuthResponse } from "./user";
 export type { TEnrollmentCourse } from "./Enrollment";
 export type { TDashboardCategory, TCategoryFormValues, TCategoryPayload } from "./dashboard/dashboardcategory";
+export type {  TCourseFormOptions,TCourseLevel, TCourseFormValues, TCourseDashboard , } from "./dashboard/course";

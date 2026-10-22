@@ -21,8 +21,6 @@ const Profile = lazy(() => import("@pages/Profile"));
 const Favorites = lazy(() => import("@pages/Favorites"));
 const Enrollments = lazy(() => import("@pages/Enrollments"));
 
-
-
 const DashboardUsers = lazy(() => import("@dashboard/pages/DashboardUsers"));
 
 const AddUser = lazy(() => import("@dashboard/pages/AddUser"));
@@ -43,17 +41,18 @@ const DashboardEditCategory = lazy(
   () => import("@dashboard/pages/UpdateCategory"),
 );
 
+const DashboardAddCourse = lazy(() => import("@dashboard/pages/AddCourse"));
+
+const DashboardEditCourse = lazy(() => import("@dashboard/pages/UpdateCourse"));
+
 const Error404 = lazy(() => import("@pages/Error404"));
 
 const router = createBrowserRouter([
-
-
   {
     path: "/",
     element: <MainLayout />,
     errorElement: <Error404 />,
     children: [
-     
       {
         index: true,
         element: (
@@ -63,7 +62,6 @@ const router = createBrowserRouter([
         ),
       },
 
-     
       {
         path: "courses",
         element: (
@@ -73,7 +71,6 @@ const router = createBrowserRouter([
         ),
       },
 
-    
       {
         path: "categories",
         element: (
@@ -83,7 +80,6 @@ const router = createBrowserRouter([
         ),
       },
 
-     
       {
         path: "categories/:slug",
         element: (
@@ -97,7 +93,6 @@ const router = createBrowserRouter([
           }
         },
       },
-
 
       {
         path: "courses/:slug",
@@ -116,7 +111,6 @@ const router = createBrowserRouter([
         },
       },
 
- 
       {
         path: "profile",
         element: (
@@ -126,11 +120,9 @@ const router = createBrowserRouter([
         ),
       },
 
-    
       {
         element: <ProtectedRoute />,
         children: [
-        
           {
             path: "enrollments",
             element: (
@@ -250,6 +242,22 @@ const router = createBrowserRouter([
             element: (
               <PageSuspenseFallback>
                 <DashboardCourses />
+              </PageSuspenseFallback>
+            ),
+          },
+          {
+            path: "courses/add",
+            element: (
+              <PageSuspenseFallback>
+                <DashboardAddCourse />
+              </PageSuspenseFallback>
+            ),
+          },
+          {
+            path: "courses/:id/edit",
+            element: (
+              <PageSuspenseFallback>
+                <DashboardEditCourse />
               </PageSuspenseFallback>
             ),
           },
